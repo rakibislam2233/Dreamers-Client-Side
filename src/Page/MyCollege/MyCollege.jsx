@@ -24,16 +24,17 @@ const MyCollege = () => {
                             <div className="rounded-xl overflow-hidden">
                               <img
                                 className="w-full h-52 rounded-xl hover:scale-110 duration-300 transition-all "
-                                src={admission.college_image}
+                                src={admission.photoURL}
                                 alt=""
                               />
                             </div>
-                            <h2 className="text-xl font-bold">{admission.college_name}</h2>
+                          <h3 className="text-xl font-bold">Student Name : {admission.name}</h3>
+                            <h2 className="font-bold">Admission College Name :   {admission.college_name}</h2>
                           </div>
-                          <h3 className="font-semibold">Student Name : {admission.name}</h3>
                           <h3 className="font-semibold">Student Email : {admission.email}</h3>
                           <h3 className="font-semibold">Student Phone : {admission.number}</h3>
                           <h3 className="font-semibold">Subject : {admission.subject}</h3>
+                          <h3 className="font-semibold">Date of Birth : {admission.birth}</h3>
                         </div>
                       </>)
                 }

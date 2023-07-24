@@ -14,11 +14,12 @@ const Navbar = () => {
     naviget("/login");
   };
   return (
-    <nav className="w-full fixed h-24 z-50 bg-gradient-to-r from-[#FBE6E5] to-[#DDECFF] shadow-lg text-gray-500">
+    <nav className="w-full fixed h-24 z-50 bg-gradient-to-r from-[#FBE6E5] to-[#DDECFF] shadow-lg ">
       <Container>
         <div className="w-full h-24 flex justify-between items-center px-5">
           <div>
             <h3 className="text-2xl font-semibold text-[#392C7D]">Dreamers</h3>
+         
           </div>
           <div className="hidden md:block">
             <ul className="flex gap-5 font-semibold">

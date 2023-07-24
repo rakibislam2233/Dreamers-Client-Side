@@ -1,23 +1,11 @@
 import axios from "axios";
 import { useContext } from "react";
-import { AiFillCamera, AiOutlineHome, AiOutlineUserAdd } from "react-icons/ai";
+import { AiFillCodepenCircle, AiOutlineHome, } from "react-icons/ai";
 import { Link, Outlet } from "react-router-dom";
 import { Toaster, toast } from "react-hot-toast";
 import { UserContext } from "../../Provider/AuthProvider";
 const Dashboardlayout = () => {
   const { user } = useContext(UserContext);
-//   const makeHost = () => {
-//     axios
-//       .put(`https://dreamslms-server-side.vercel.app/setHost/${user?.email}`)
-//       .then((res) => {
-//         if (res.data.modifiedCount > 0) {
-//           toast.success("Make Host Successfully");
-//         }
-//       })
-//       .catch((err) => {
-//         console.log(err.message);
-//       });
-//   };
   return (
     <>
      
@@ -45,20 +33,11 @@ const Dashboardlayout = () => {
                 </li>
                 <li>
                   <Link
-                    to="/dashboard/manageUsers"
+                    to="/dashboard/editInformation"
                     className="flex gap-2 items-center hover:text-teal-500 duration-200 cursor-pointer"
                   >
-                    <AiOutlineUserAdd className="w-5 h-5"></AiOutlineUserAdd>
-                    Manage Users
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    to="/dashboard/managePhotography"
-                    className="flex gap-2 items-center hover:text-teal-500 duration-200 cursor-pointer"
-                  >
-                    <AiFillCamera className="w-5 h-5"></AiFillCamera>Manage
-                    Photography
+                    <AiFillCodepenCircle className="w-5 h-5"></AiFillCodepenCircle >
+                    Edit Information
                   </Link>
                 </li>
                 <li>

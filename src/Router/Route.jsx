@@ -4,13 +4,13 @@ import Home from "../Page/Home/Home";
 import Colleges from "../Page/Colleges/Colleges";
 import Admission from "../Page/Admission/Admission";
 import MyCollege from "../Page/MyCollege/MyCollege";
-import Blogs from "../Page/Blogs/Blogs";
 import Contact from "../Page/Contact/Contact";
 import Login from "../Page/Auth/Login/Login";
 import Signup from "../Page/Auth/Signup/Signup";
 import AdmissionProcess from "../Page/Admission/AdmissionProcess";
 import CollegesDetails from "../Page/Colleges/CollegesDetails";
 import Dashboardlayout from "../Layout/Dashboardlayout/Dashboardlayout";
+import Blogs from "../Page/Home/Blogs/Blogs";
 
 
 const router = createBrowserRouter([
@@ -78,6 +78,11 @@ const router = createBrowserRouter([
         {
           path:'dashboard',
           element:<div>This is rakib</div>
+        }
+        ,
+        {
+          path:"editInformation",
+          element:<></>
         }
       ]
     }
