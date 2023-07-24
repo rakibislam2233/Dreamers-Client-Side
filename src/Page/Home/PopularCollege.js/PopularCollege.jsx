@@ -2,14 +2,15 @@ import { Link } from "react-router-dom";
 import Button from "../../Shared/Button";
 import Container from "../../Shared/Container/Container";
 import useCollege from "../../../Hook/useCollege";
-
+import { Rating } from '@smastrom/react-rating'
+import '@smastrom/react-rating/style.css'
 const PopularCollege = () => {
   const [colleges, isLoading] = useCollege();
   console.log(colleges);
   return (
     <div className="w-full py-10 bg-gradient-to-r from-[#FBE6E5] to-[#DDECFF] p-5">
       <Container>
-        <h2 className="text-2xl  text-center py-5">
+        <h2 className="text-3xl text-center font-semibold py-5">
           Popular College
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 box-border">
@@ -34,7 +35,7 @@ const PopularCollege = () => {
                   <div className="flex justify-between items-center">
                     <p className="font-semibold">Research : {college.number_of_research}
                     </p>
-                    <p>{college.college_rating}</p>
+                    <p><Rating readOnly style={{ maxWidth: 120 }} value={college.college_rating} /></p>
                   </div>
                 </div>
                 <div className="flex justify-center py-5">

@@ -1,17 +1,12 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { Rating } from "@smastrom/react-rating";
 import { useParams } from "react-router-dom";
+import useSingleCollege from "../../Hook/useSingleCollege";
 const CollegesDetails = () => {
   const { id } = useParams();
-  const [singleData, setSingleData] = useState([]);
-  useEffect(() => {
-    axios.get(`https://dreamslms-server-side.vercel.app/singleCollege/${id}`).then((res) => {
-      setSingleData(res.data);
-    });
-  }, [id]);
+  const [singleData] = useSingleCollege({id:id})
   return (
     <div className="pt-24 w-full max-w-5xl mx-auto py-20">
-      <div className="border rounded mt-5 p-5 cursor-pointer flex justify-between flex-col gap-5 text-gray-800">
+      <div className="border border-gray-300 rounded mt-5 p-5 cursor-pointer flex justify-between flex-col gap-5 text-gray-800">
         <div className="space-y-2">
           <div className="rounded-xl overflow-hidden">
             <img
@@ -62,7 +57,7 @@ const CollegesDetails = () => {
           <p className="font-semibold">
               Research : {singleData.number_of_research}
             </p>
-            <p className="font-semibold"> Rating : {singleData.college_rating}</p>
+            <p className="flex gap-1 font-semibold">Rating : <Rating readOnly style={{ maxWidth: 120 }} value={singleData.college_rating} /></p>
         </div>
       </div>
     </div>

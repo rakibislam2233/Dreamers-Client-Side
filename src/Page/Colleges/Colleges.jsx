@@ -2,9 +2,9 @@ import { Link } from "react-router-dom";
 import Container from "../Shared/Container/Container";
 import useCollege from "../../Hook/useCollege";
 import Button from "../Shared/Button";
+import { Rating } from "@smastrom/react-rating";
 const Colleges = () => {
   const [colleges, isLoading] = useCollege();
-  console.log(colleges);
   return (
     <div className="w-full py-10 bg-gradient-to-r from-[#FBE6E5] to-[#DDECFF] p-5 pt-24">
       <Container>
@@ -12,7 +12,7 @@ const Colleges = () => {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
           {colleges.map((college) => (
             <>
-              <div className="border shadow-lg p-5 rounded-xl  cursor-pointer flex justify-between flex-col gap-3 text-gray-800">
+              <div className="border  shadow-lg p-5 rounded-xl  cursor-pointer flex justify-between flex-col gap-3 text-gray-800">
                 <div className="space-y-3">
                   <div className="rounded-xl overflow-hidden">
                     <img
@@ -30,7 +30,7 @@ const Colleges = () => {
                     <p className="font-semibold">
                       Research: {college.number_of_research}
                     </p>
-                    <p>{college.college_rating}</p>
+                    <p><Rating readOnly style={{ maxWidth: 120 }} value={college.college_rating} /></p>
                   </div>
                 </div>
                 <div className="flex justify-center py-5">

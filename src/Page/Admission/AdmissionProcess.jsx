@@ -4,9 +4,15 @@ import { Toaster, toast } from "react-hot-toast";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Button from "../Shared/Button";
+import useSingleCollege from "../../Hook/useSingleCollege";
+import { useContext } from "react";
+import { UserContext } from "../../Provider/AuthProvider";
 
 const AdmissionProcess = () => {
     const {id} = useParams()
+    const {user} = useContext(UserContext)
+    console.log(user);
+    const [singleData] = useSingleCollege({id:id})
     const {
       register,
       handleSubmit,
@@ -24,9 +30,10 @@ const AdmissionProcess = () => {
       axios.post(url,formData)
         .then((res) => {
           const photoURL = res.data.data.display_url;
-          const {name,subject,email,number,address,birth,college } = data;
+          const {name,subject,email,number,address,birth} = data;
+          const {_id,college_name,college_image} = singleData;
           const admissionProcessInfo  = {
-            name,subject,email,number,address,birth,college,photoURL
+            name,subject,email,number,address,birth,photoURL,admissionCollegeId:_id,college_name,college_image
           }
          axios.post(`https://dreamslms-server-side.vercel.app/admissionDetails`,admissionProcessInfo)
          .then(res=>{
@@ -55,6 +62,8 @@ const AdmissionProcess = () => {
                 </label>
                 <input
                   type="text"
+                  defaultValue={user?.displayName}
+                  readOnly
                   placeholder="Enter Candidate Name"
                   {...register("name", { required: true })}
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
@@ -89,6 +98,8 @@ const AdmissionProcess = () => {
                 </label>
                 <input
                   type="email"
+                  defaultValue={user?.email}
+                  readOnly
                   {...register("email", { required: true })}
                   placeholder="Enter Candidate Email"
                   className="w-full px-3 py-2 border rounded-md border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
@@ -114,21 +125,6 @@ const AdmissionProcess = () => {
                     Please enter number
                   </span>
                 )}
-              </div>
-              <div className="w-full">
-                <label htmlFor="college" className="block mb-2 font-semibold ">
-                College Name
-                </label>
-                <input
-                  type="text"
-                  defaultValue={"Thakurgaon Govt College"}
-                  readOnly
-                  className="w-full px-3 py-2 border rounded-md
-                   border-gray-300 focus:outline-rose-500 bg-gray-200 text-gray-900"
-                  {...register("college", {
-                    required: true,
-                  })}
-                />
               </div>
               <div className="w-full">
                 <label htmlFor="address" className="block mb-2 font-semibold ">

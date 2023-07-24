@@ -4,7 +4,7 @@ const Gallary = () => {
     <>
     {/* this is a gallery section */}
       <div className="w-full py-5">
-        <h3 className="text-4xl text-center font-semibold py-8 ">
+        <h3 className="text-3xl text-center font-semibold py-5 ">
           Our Gallery
         </h3>
        <div className="p-5">
